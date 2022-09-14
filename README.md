@@ -1,2 +1,1 @@
-# JGS
-JacobbGameServer do not leak!
+# Saphire Gamign (its just fucking jgs )
