@@ -622,7 +622,7 @@ namespace Hooks
 			auto PC = (AFortPlayerControllerAthena*)pObject;
 			auto BuildingActor = (ABuildingSMActor*)pObject;
 			auto Params = (ABuildingActor_OnDamageServer_Params*)pParams;
-			auto RandomPicks = Globals::Pickaxes[rand() % Globals::Pickaxes.size()];
+		
 			auto WorldInventory = reinterpret_cast<InventoryPointer*>(PC)->WorldInventory;
 			if (Params->InstigatedBy && Params->InstigatedBy->IsA(AFortPlayerController::StaticClass()))
 			{
@@ -630,8 +630,9 @@ namespace Hooks
 
 				LOG("ResourceType: " << (int)BuildingActor->ResourceType.GetValue());
 
-				if (FortController->MyFortPawn->CurrentWeapon && FortController->MyFortPawn->CurrentWeapon->WeaponData == RandomPicks)
-					FortController->ClientReportDamagedResourceBuilding(BuildingActor, BuildingActor->ResourceType, Globals::MathLib->STATIC_RandomIntegerInRange(3, 6), false, false);
+				
+				FortController->ClientReportDamagedResourceBuilding(BuildingActor, BuildingActor->ResourceType, Globals::MathLib->STATIC_RandomIntegerInRange(3, 6), false, false);
+
 			}
 		}
 

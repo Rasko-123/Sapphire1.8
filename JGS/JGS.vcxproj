@@ -12,6 +12,7 @@
     <ProjectGuid>{bc51f751-a8ec-459b-a0d7-226c7001e86d}</ProjectGuid>
     <RootNamespace>JGS</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Sapphire1.8</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

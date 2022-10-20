@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <random>
 
 static auto StaticLoadObjectInternal = reinterpret_cast<UObject * (*)(UClass * InClass, UObject * InOuter, const TCHAR * Name, const TCHAR * FileName, uint32_t LoadFlags, UPackageMap * Sandbox, bool bAllowObjectReconciliation)>(uintptr_t(GetModuleHandle(NULL)) + 0x142EE30);
 
@@ -75,6 +76,8 @@ namespace Globals
 	std::vector<UFortWeaponMeleeItemDefinition*> Pickaxes;
 	std::vector<CharPart> CharacterParts;
 }
+
+
 
 static void LoadLootPools()
 {

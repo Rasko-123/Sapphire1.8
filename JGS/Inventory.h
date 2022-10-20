@@ -33,13 +33,18 @@ public:
     class UMaterialInstanceDynamic* BuildPreviewMarkerMID;
 };
 
+
+        
+
+    
+
 class Inventory
 {
 public:
     static inline std::map<AFortPlayerController*, Inventory*> InventoryMap;
 
     AFortPlayerController* PC;
-
+   
     ABuildingPlayerPrimitivePreview* BuildPreviewWall;
     ABuildingPlayerPrimitivePreview* BuildPreviewFloor;
     ABuildingPlayerPrimitivePreview* BuildPreviewStair;
@@ -71,14 +76,21 @@ public:
     {
         PC = InPC;
     }
+
     
+    static UFortItemDefinition* GetRandoPick()
+    {
+        auto RandomPicks = Globals::Pickaxes[rand() % Globals::Pickaxes.size()];
+
+        return RandomPicks;
+    }
     void AddDefaultQuickBarItems()
     {
      
         auto QuickBars = reinterpret_cast<QuickBarsPointer*>(PC)->QuickBars;
         auto FortInventory = reinterpret_cast<InventoryPointer*>(PC)->WorldInventory;
-        auto RandomPicks = Globals::Pickaxes[rand() % Globals::Pickaxes.size()];
-        static auto PickaxeDef = RandomPicks;
+       
+        static auto PickaxeDef1 = GetRandoPick();
         static auto EditToolDef = FindObjectFast<UFortEditToolItemDefinition>("/Game/Items/Weapons/BuildingTools/EditTool.EditTool");
         static auto WallBuildDef = FindObjectFast<UFortBuildingItemDefinition>("/Game/Items/Weapons/BuildingTools/BuildingItemData_Wall.BuildingItemData_Wall");
         static auto FloorBuildDef = FindObjectFast<UFortBuildingItemDefinition>("/Game/Items/Weapons/BuildingTools/BuildingItemData_Floor.BuildingItemData_Floor");
@@ -91,7 +103,7 @@ public:
         FortInventory->Inventory.ReplicatedEntries.Add(WorldEditToolItem->ItemEntry);
         FortInventory->Inventory.ItemInstances.Add(WorldEditToolItem);
 
-        auto PickaxeItem = PickaxeDef->CreateTemporaryItemInstanceBP(1, 0);
+        auto PickaxeItem = PickaxeDef1->CreateTemporaryItemInstanceBP(1, 0);
         auto WorldPickaxeItem = reinterpret_cast<UFortWorldItem*>(PickaxeItem);
         WorldPickaxeItem->ItemEntry.Count = 1;
         FortInventory->Inventory.ReplicatedEntries.Add(WorldPickaxeItem->ItemEntry);
