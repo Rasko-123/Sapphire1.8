@@ -1,1 +1,3 @@
-# Saphire Gamign (its just fucking jgs )
+# Sapphire 1.8
+ 
+ THIS IS NOT GETTING UPDATED SO FUCKING DOWNLOAD IT OR SOMETHING
